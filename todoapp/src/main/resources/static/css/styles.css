@@ -1,0 +1,302 @@
+:root {
+    /* Primary Colors */
+    --color-primary: #4A6CF7;
+    --color-secondary: #00B8D9;
+    --color-accent: #4FACFE;
+
+    /* Text Colors */
+    --text-light: #FFFFFF;
+    --text-dark: #111827;
+
+    /* Background Colors */
+    --bg-light: #F7F9FC;
+    --bg-dark: #1B1B2F;
+
+    /* Card Colors */
+    --card-light: #FFFFFF;
+    --card-dark: rgba(44, 44, 60, 0.85);
+
+    /* Border Colors */
+    --border-light: #E5E7EB;
+    --border-dark: #2E3440;
+
+    /* Gradients */
+    --gradient-light: linear-gradient(135deg, #4A6CF7, #00B8D9);
+    --gradient-dark: linear-gradient(135deg, #4FACFE, #00F2FE);
+
+    /* Glass Card Backgrounds */
+    --glass-bg-light: rgba(255, 255, 255, 0.6);
+    --glass-bg-dark: rgba(30, 30, 30, 0.6);
+}
+
+/* Base Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+body:not(.light-mode) {
+    background: var(--bg-dark);
+    color: var(--text-light);
+}
+
+/* Light Mode */
+body.light-mode {
+    background: var(--bg-light);
+    color: var(--text-dark);
+}
+
+
+/* Form Control */
+.form-control {
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 0px 15px;
+    font-size: 1.1rem;
+    background: #fff;
+    height: 50px;
+    color: var(--text-dark);
+    transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+body:not(.light-mode) .form-control {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-dark);
+    color: var(--text-light);
+}
+
+/* Gradient Button */
+.btn-gradient {
+    background: var(--gradient-light);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+body:not(.light-mode) .btn-gradient {
+    background: var(--gradient-dark);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: var(--card-light);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.08);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    transition: transform 0.3s ease, background 0.3s, color 0.3s;
+}
+
+body:not(.light-mode) .sidebar {
+    background: var(--card-dark);
+    color: var(--text-light);
+}
+
+.sidebar.collapsed {
+    margin-left: -250px;
+    transition: margin-left 0.3s ease;
+}
+
+/* Sidebar Links */
+.sidebar .nav-link {
+    color: var(--text-dark);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s;
+}
+
+body:not(.light-mode) .sidebar .nav-link {
+    color: var(--text-light);
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+    background: var(--gradient-light);
+    color: #fff;
+}
+
+body:not(.light-mode) .sidebar .nav-link.active,
+body:not(.light-mode) .sidebar .nav-link:hover {
+    background: var(--gradient-dark);
+    color: #fff;
+}
+
+/* Glassmorphism Cards */
+.glass-card,
+.glassmorphism {
+    background: var(--glass-bg-light);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 20px;
+    transition: background 0.3s, color 0.3s, backdrop-filter 0.3s;
+}
+
+body:not(.light-mode) .glass-card,
+body:not(.light-mode) .glassmorphism {
+    background: var(--glass-bg-dark);
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(6px);
+    color: var(--text-light);
+}
+
+/* Links */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-secondary);
+}
+
+/* Sidebar Toggle */
+#sidebarToggle,
+.sidebar-toggle-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1100;
+}
+
+/* Page Content Alignment */
+#page-content-wrapper {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+@media (max-width: 991.98px) {
+    #page-content-wrapper {
+        margin-left: 0;
+    }
+}
+
+/* Navbar Form */
+.navbar form {
+    flex-grow: 1;
+}
+
+/* Dark Mode Sidebar Defaults */
+#sidebar {
+    background-color: #1e1e2f !important;
+    color: #e0e0e0 !important;
+}
+
+#sidebar a,
+#sidebar .nav-link,
+#sidebar .sidebar-heading,
+#sidebar .list-group-item {
+    color: #e0e0e0 !important;
+}
+
+#sidebar a:hover,
+#sidebar .nav-link:hover {
+    color: #ffffff !important;
+}
+
+/* Light Mode Sidebar */
+body.light-mode #sidebar {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+}
+
+body.light-mode #sidebar a,
+body.light-mode #sidebar .nav-link,
+body.light-mode #sidebar .sidebar-heading,
+body.light-mode #sidebar .list-group-item {
+    color: #212529 !important;
+}
+
+body.light-mode #sidebar a:hover,
+body.light-mode #sidebar .nav-link:hover {
+    color: #000000 !important;
+}
+
+/* Tables */
+body:not(.light-mode) table,
+body:not(.light-mode) table th,
+body:not(.light-mode) table td {
+    background-color: #1e1e2f !important;
+    color: #e0e0e0 !important;
+    border-color: #2c2c3e !important;
+}
+
+body.light-mode table,
+body.light-mode table th,
+body.light-mode table td {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+    border-color: #dee2e6 !important;
+}
+
+#remainders-section .list-group-item {
+    background-color: #ffffff; /* light mode default */
+    color: #212529;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+body:not(.light-mode) #remainders-section .list-group-item {
+    background-color: #2e2e3e; /* dark mode only inside remainders section */
+    color: #f0f0f0;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+/* Ensure .glass-card text color adapts clearly in dark/light */
+.glass-card {
+    color: var(--text-dark);
+}
+
+body:not(.light-mode) .glass-card {
+    color: var(--text-light);
+}
+
+/* Reminders List Group Item Theme Adaptation */
+.list-group-item {
+    background: transparent;
+    color: var(--text-dark);
+    border: none;
+}
+
+body:not(.light-mode) .list-group-item {
+    color: var(--text-light);
+}
+
+.btn-gradient:hover {
+    filter: brightness(1.1);
+}
+
+.modal-content {
+    background: var(--card-light);
+}
+
+body:not(.light-mode) .modal-content {
+    background: var(--card-dark);
+}
+
+.table thead th {
+    background: var(--gradient-light);
+    color: white;
+}
+
+body:not(.light-mode) .table thead th {
+    background: var(--gradient-dark);
+}
+
+
+

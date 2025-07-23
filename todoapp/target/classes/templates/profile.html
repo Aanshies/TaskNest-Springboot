@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile | TaskNest</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <style>
+    body {
+        background: linear-gradient(to right, #f0f4ff, #e8efff);
+        font-family: 'Segoe UI', sans-serif;
+        min-height: 100vh;
+    }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(16px);
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        max-width: 420px;
+        margin: auto;
+        padding: 2rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .btn-primary {
+        background-color: #4A6CF7;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #3a57c4;
+    }
+
+    .btn-danger {
+        background-color: #ff4d4f;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-danger:hover {
+        background-color: #d9363e;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 0.6rem 1rem;
+        border: 1px solid #d0d7ff;
+        transition: border 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #4A6CF7;
+        box-shadow: 0 0 0 0.15rem rgba(74, 108, 247, 0.25);
+    }
+
+    h3, h5 {
+        color: #1f2d5a;
+    }
+
+    label, p {
+        color: #1f2d5a;
+    }
+
+    hr {
+        border-top: 1px solid rgba(74, 108, 247, 0.2);
+    }
+
+    .text-center img {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .mt-2 {
+        margin-top: 0.5rem !important;
+    }
+
+    .mt-4 {
+        margin-top: 1.5rem !important;
+    }
+
+    .mb-2 {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .mb-3 {
+        margin-bottom: 1rem !important;
+    }
+
+    .mb-4 {
+        margin-bottom: 1.5rem !important;
+    }
+</style>
+
+</head>
+<body class="light-mode">
+
+<div class="container mt-5">
+    <div class="card glass-card shadow p-4">
+        <div class="text-center mb-4">
+            <img th:src="@{https://ui-avatars.com/api/?name={username}(username=${user.username})&background=4A6CF7&color=fff&rounded=true}" alt="Profile" class="rounded-circle" width="100" height="100">
+            <h3 class="mt-2" th:text="${user.username}">Username</h3>
+            <p class="text-muted" th:text="${user.email}">user@example.com</p>
+        </div>
+
+        <!-- Removed Joined On block to prevent crashing -->
+
+        <hr>
+
+        <h5 class="fw-bold">Change Password</h5>
+        <form th:action="@{/profile/change-password}" method="post">
+            <div class="mb-2">
+                <input type="password" name="oldPassword" class="form-control" placeholder="Current Password" required>
+            </div>
+            <div class="mb-2">
+                <input type="password" name="newPassword" class="form-control" placeholder="New Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Update Password</button>
+        </form>
+
+        <div class="mt-4 text-center">
+            <a th:href="@{/logout}" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/darkmode.js}"></script>
+</body>
+</html>

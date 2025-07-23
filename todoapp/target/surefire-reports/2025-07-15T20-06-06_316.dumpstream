@@ -1,0 +1,5 @@
+# Created at 2025-07-15T20:06:07.103
+Boot Manifest-JAR contains absolute paths in classpath 'D:\Ammulu\Projects\Tasknest-todoapp\todoapp\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+

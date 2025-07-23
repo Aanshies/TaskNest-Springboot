@@ -1,0 +1,56 @@
+<!-- fragments/edit-todo-form.html -->
+<div th:fragment="modalContent">
+    <div class="modal-content">
+        <form th:action="@{/dashboard/edit/{id}(id=${todo.id})}" th:object="${todo}" method="post">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Todo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <input type="hidden" th:field="*{id}">
+
+                <div class="mb-2">
+                    <label class="form-label">Title</label>
+                    <input type="text" th:field="*{title}" class="form-control" required>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">Description</label>
+                    <textarea th:field="*{description}" class="form-control"></textarea>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">Due Date</label>
+                    <input type="date" th:field="*{dueDate}" class="form-control" required>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">Priority</label>
+                    <select th:field="*{priority}" class="form-control">
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">Category</label>
+                    <select th:field="*{category}" class="form-control">
+                        <option value="Work">Work</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Study">Study</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
