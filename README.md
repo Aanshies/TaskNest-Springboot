@@ -46,8 +46,7 @@ These give a quick visual walkthrough of what XpenseEase offers.
 | Frontend   | Thymeleaf, Bootstrap             |
 | Backend    | Spring Boot, Spring Security     |
 | Database   | PostgreSQL                       |
-| ORM	
-  Hibernate  | (Spring Data JPA)                |
+| ORM        | (Spring Data JPA)                |
 | Security   | BCrypt Password Hashing          |
 
 ---
@@ -91,8 +90,9 @@ http://localhost:8080
 
 ## 🌐 Upcoming Enhancements
 ✅ Deploy on Render / Fly.io
+
 ✅ Add email notifications for due tasks
-✅ Dark Mode toggle
+
 ✅ Mobile-friendly improvements
 
 ---
