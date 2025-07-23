@@ -1,14 +1,24 @@
-# Use a lightweight OpenJDK image
-FROM eclipse-temurin:21-jdk-alpine
+# ---- Stage 1: Build ----
+FROM eclipse-temurin:21-jdk-alpine as builder
 
-# Set working directory
 WORKDIR /app
 
-# Copy the built jar (or build inside container, see below)
-COPY target/*.jar app.jar
+# Copy the source code
+COPY . .
+
+# Build the project
+RUN ./mvnw clean package -DskipTests
+
+# ---- Stage 2: Run ----
+FROM eclipse-temurin:21-jre-alpine
+
+WORKDIR /app
+
+# Copy the jar from the builder stage
+COPY --from=builder /app/target/*.jar app.jar
 
 # Expose port
 EXPOSE 8080
 
-# Run the jar file
+# Run the jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
